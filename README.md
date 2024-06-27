@@ -63,11 +63,11 @@ http://127.0.0.1:8000/schema/redoc/
 ```
 http://127.0.0.1:8000
 ```
-14. You can sign up using the navigation on the right. The app uses `email` as `username` 
+14. You can sign up using the navigation on the right. The app uses `email` as `username`. To login, provide your `email` as `username`
 15. You can upload your profile picture by selecting the `Profile Update` button on the right
 16. From the homepage Task Dashboard, you can `Add Task`, `Modify Tasks`, `View Task Details`, `Delete Tasks`
 17. From the homepage Task Dashboard, you may `Search Tasks` by their titles, `Filter Tasks` by priority and sort
-18. Click on the `Ajax Tasks` link on our left to see a page where you may load tasks by clicking the appropriate buttons based on their status and search for tasks async
+18. Click on the `Ajax Tasks` link on your left to see a page where you may load tasks by clicking the appropriate buttons based on their status and search for tasks async
 19. You may go to following API endpoints to view tasks based on status
 ```
 http://127.0.0.1:8000/tasks/in_progress/
