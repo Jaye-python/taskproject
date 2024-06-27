@@ -53,7 +53,7 @@ python manage.py createsuperuser
 ```
 python manage.py runserver
 ```
-11. Login in to `http://127.0.0.1:8000/admin/` to manage the app
+11. Login in to `http://127.0.0.1:8000/admin/` to manage the app. Admin page has been created to perform CRUD functions for the app
 12. To check the API documentation, visit either of these:
 ```
 http://127.0.0.1:8000/schema/swagger-ui/#/
@@ -67,7 +67,7 @@ http://127.0.0.1:8000
 15. You can upload your profile picture by selecting the `Profile Update` button on the right
 16. From the homepage Task Dashboard, you can `Add Task`, `Modify Tasks`, `View Task Details`, `Delete Tasks`
 17. From the homepage Task Dashboard, you may `Search Tasks` by their titles, `Filter Tasks` by priority and sort
-18. Click on the `Ajax Tasks` link on your left to see a page where you may load tasks by clicking the appropriate buttons based on their status and search for tasks async
+18. Click on the `Ajax Tasks` link on your left to see a page where you may load tasks by clicking the appropriate buttons based on their status and search for tasks async. This page uses jQuery to load tasks and search tasks
 19. You may go to following API endpoints to view tasks based on status
 ```
 http://127.0.0.1:8000/tasks/in_progress/
