@@ -1,0 +1,27 @@
+{% extends 'task/base.html' %}
+{% block title %} Task Page {% endblock %}
+
+{% block content %}
+<div class="flex justify-center items-center min-h-screen bg-gray-100">
+    <div class="w-full max-w-2xl p-4">
+        <div class="bg-white border border-primary shadow-sm rounded-lg">
+            <div class="p-6">
+                <h5 class="text-2xl font-bold mb-4 text-blue-600 text-center">Task Details</h5>
+                <p class="mb-2"><strong>ID:</strong> {{ task.id }}</h6>
+                <p class="mb-2"><strong>Title:</strong> {{ task.title }}</p>
+                <p class="mb-2"><strong>Description:</strong> {{ task.description }}</p>
+                <p class="mb-2"><strong>Status:</strong> {{ task.get_status_display }}</p>
+                <p class="mb-2"><strong>Priority:</strong> {{ task.get_priority_display }}</p>
+                <p class="mb-2"><strong>Due Date:</strong> {{ task.due_date }}</p>
+                <p class="mb-2"><strong>Category:</strong> {{ task.category }}</p>
+                <p class="mb-2"><strong>Assigned To:</strong> {{ task.assigned_to }}</p>
+                <br>
+                <a class="btn btn-primary shadow-sm mt-2 px-4 py-2 bg-gray-600 text-white rounded-md cursor-pointer" onclick="history.go(-1)">Go back</a>
+         
+
+            </div>
+            
+        </div>
+    </div>
+</div>
+{% endblock %}
