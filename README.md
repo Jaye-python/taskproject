@@ -37,28 +37,27 @@ source taskvenv/bin/activate
 ```
 git clone https://github.com/Jaye-python/taskproject.git
 ```
-7. Move into the `taskproject` folder 
+7. Move into the `taskproject` folder which is included in the downloaded repo
 ```
 cd taskproject
 ```
-8. Install dependencies; DB uses Django inbuilt SQLite; then MIGRATE
+8. Install dependencies; DB uses Django inbuilt SQLite; no need to run migration
 ```
 pip install -r requirements.txt
-python manage.py migrate
 ```
 9. Create `superuser` account. There is an existing Admin account with email: `bb@bb.com` and password `lagoslagos`
 ```
 python manage.py createsuperuser
 ```
-10. Launch application
+10. Launch application. You may also open the repo in VS Code by running `code .`
 ```
 python manage.py runserver
 ```
 11. Login in to `http://127.0.0.1:8000/admin/` to manage the app
 12. To check the API documentation, visit either of these:
 ```
-http://127.0.0.1:8000/api/schema/swagger-ui/#/
-http://127.0.0.1:8000/api/schema/redoc/
+http://127.0.0.1:8000/schema/swagger-ui/#/
+http://127.0.0.1:8000/schema/redoc/
 ```
 13. You can view the Task dashboard from the root URL
 ```
