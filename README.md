@@ -1,4 +1,4 @@
-# Game Application
+# Task Management Application
 This is a task management dashboard application built using Django for the backend and HTML, TailwindCSS, and jQuery for the frontend.
 Tailwind CSS was added using CDN for faster development.
 
