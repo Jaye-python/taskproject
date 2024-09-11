@@ -21,7 +21,7 @@ class CustomUserAdmin(UserAdmin):
     inlines = [TaskInline]
     
     fieldsets = (
-        (None, {'fields': ('email', 'password')}),
+        (None, {'fields': ('email', 'profile_pix')}),
         ('Personal info', {'fields': ('first_name',)}),
         ('Important dates', {'fields': ('last_login', 'date_joined')}),
         

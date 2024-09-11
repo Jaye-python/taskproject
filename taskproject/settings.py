@@ -10,17 +10,17 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+env = os.environ
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
+SECRET_KEY = env.get('SECRET_KEY')
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-785yh)y_f11k_5_j=u55+)@godmh$&sm=!=2yit&rz%t&kd)t2'
+# _KEY = 'django-insecure-785yh)y_f11k_5_j=u55+)@godmh$&sm=!=2yit&rz%t&kd)t2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -29,7 +29,6 @@ DEBUG = True
 
 # if DEBUG:
 #     run_tailwind_watch()
-
 
 
 ALLOWED_HOSTS = []
@@ -51,21 +50,20 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
     'rest_framework',
     'drf_spectacular'
-    
-]
-import os
 
-REST_FRAMEWORK =  {
-    'DEFAULT_AUTHENTICATION_CLASSES':[
+]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.BasicAuthentication',
     ],
 
-    'DEFAULT_PERMISSION_CLASSES':[
+    'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticated',
     ],
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    'PAGE_SIZE' : 10,
+    'PAGE_SIZE': 10,
 }
 
 STATICFILES_DIRS = [
@@ -122,6 +120,30 @@ DATABASES = {
     }
 }
 
+# ANCHOR DATABASE
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': env.get('DATABASE_NAME'),
+#         'USER': env.get('DATABASE_USER'),
+#         'PASSWORD': env.get('DATABASE_PASS'),
+#         'HOST': env.get('DATABASE_HOST'),
+#         'PORT': env.get('DATABASE_PORT', '5433'),
+#     }
+# }
+
+# FOR DOCKER COMPOSE
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'taskprojectdb',
+#         'USER': 'postgres',
+#         'PASSWORD': '',
+#         'HOST': 'taskprojectdb',
+#         'PORT': 5432,
+#     }
+# }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -159,7 +181,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-MEDIA_ROOT =  os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 # Default primary key field type

@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    container_name: django_app
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    environment:
+      - POSTGRES_NAME=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_HOST=taskprojectdb
+      - POSTGRES_PORT=5433  # Add this to specify the port
+    depends_on:
+      - taskprojectdb
+
+  taskprojectdb:
+    image: postgres:13
+    container_name: postgres_db
+    ports:
+      - "5433:5432"  # Map port 5433 on the host to port 5432 in the container
+    environment:
+      POSTGRES_DB: taskprojectdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
