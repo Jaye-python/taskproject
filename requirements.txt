@@ -1,12 +1,15 @@
 asgiref==3.8.1
 attrs==23.2.0
 Django==5.0.6
+django-debug-toolbar==4.4.6
+django-prometheus==2.3.1
 djangorestframework==3.15.2
 drf-spectacular==0.27.2
 inflection==0.5.1
 jsonschema==4.22.0
 jsonschema-specifications==2023.12.1
 pillow==10.3.0
+prometheus_client==0.20.0
 psycopg2-binary==2.9.9
 PyYAML==6.0.1
 referencing==0.35.1

@@ -5,6 +5,16 @@ from django.urls import reverse_lazy
 from django.contrib import messages
 from task.forms import CreateTaskForm
 from .models import Task
+from django.shortcuts import redirect, render
+from prometheus_client import start_http_server, Summary
+
+REQUEST_TIME = Summary('request_processing_seconds', 'Time spent processing request', ['view_name'])
+
+
+@REQUEST_TIME.labels(view_name='HomeView').time()
+def home(request):
+    scores = CustomUser.objects.all()
+    return render(request, 'accounts/home.html', {'scores':scores})
 
 
 class TasksListView(ListView):
@@ -13,6 +23,7 @@ class TasksListView(ListView):
     template_name = 'task/task.html'
     paginate_by = 10
 
+    @REQUEST_TIME.labels(view_name='TaskView').time()
     def get_queryset(self, *args, **kwargs):
         base_queryset = Task.objects.all()
         search_query = self.request.GET.get('q', None)

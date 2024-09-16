@@ -46,3 +46,4 @@ compressed_static/
 dump.rdb
 **/*.ipynb_checkpoints
 .ipynb_checkpoints/
+*.deb

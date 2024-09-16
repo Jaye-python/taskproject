@@ -1,8 +1,9 @@
 from django.db import models
 from django.conf import settings
 from django.urls import reverse
+from django_prometheus.models import ExportModelOperationsMixin
 
-class Task(models.Model):
+class Task(ExportModelOperationsMixin('task'), models.Model):
     STATUS_CHOICES = [
         ('In_Progress', 'In_Progress'),
         ('Completed', 'Completed'),

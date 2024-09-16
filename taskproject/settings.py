@@ -20,8 +20,6 @@ env = os.environ
 
 SECRET_KEY = env.get('SECRET_KEY')
 
-# _KEY = 'django-insecure-785yh)y_f11k_5_j=u55+)@godmh$&sm=!=2yit&rz%t&kd)t2'
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -31,12 +29,17 @@ DEBUG = True
 #     run_tailwind_watch()
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
+
+
 AUTH_USER_MODEL = 'accounts.CustomUser'
 LOGIN_URL = '/login/'
 
-# Application definition
-
+# ANCHOR INSTALLED_APPS
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -44,15 +47,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'debug_toolbar',
     'accounts',
     'task',
     'api',
     'django.contrib.humanize',
     'rest_framework',
-    'drf_spectacular'
+    'drf_spectacular',
+    'django_prometheus',
+    
 
 ]
 
+# ANCHOR REST_FRAMEWORK
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.BasicAuthentication',
@@ -79,7 +86,9 @@ STATICFILES_DIRS = [
 #     'django.contrib.staticfiles.finders.PostProcessorFinder',
 # ]
 
+# ANCHOR MIDDLEWARE
 MIDDLEWARE = [
+    'django_prometheus.middleware.PrometheusBeforeMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -87,6 +96,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django_prometheus.middleware.PrometheusAfterMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'taskproject.urls'
@@ -123,23 +134,38 @@ DATABASES = {
 # ANCHOR DATABASE
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'ENGINE': 'django_prometheus.db.backends.postgresql', # PROMETHEUS
 #         'NAME': env.get('DATABASE_NAME'),
 #         'USER': env.get('DATABASE_USER'),
 #         'PASSWORD': env.get('DATABASE_PASS'),
 #         'HOST': env.get('DATABASE_HOST'),
 #         'PORT': env.get('DATABASE_PORT', '5433'),
 #     }
+# } 
+
+#compose FOR DOCKER COMPOSE
+# DATABASES = {
+#     'default': {
+#         # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'ENGINE': 'django_prometheus.db.backends.postgresql', # PROMETHEUS
+#         'NAME': 'taskprojectdb',
+#         'USER': 'postgres',
+#         'PASSWORD': 'ola',
+#         'HOST': 'taskprojectdb',
+#         'PORT': 5432,
+#     }
 # }
 
-# FOR DOCKER COMPOSE
+#FOR KUBERNETES
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         # 'ENGINE': 'django_prometheus.db.backends.postgresql', # PROMETHEUS
 #         'NAME': 'taskprojectdb',
 #         'USER': 'postgres',
-#         'PASSWORD': '',
-#         'HOST': 'taskprojectdb',
+#         'PASSWORD': 'ola',
+#         'HOST': 'postgres-service',
 #         'PORT': 5432,
 #     }
 # }

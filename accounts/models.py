@@ -6,7 +6,7 @@ from django.utils.translation import gettext_lazy as _
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login, logout
 from django.core.validators import validate_email
-
+from django_prometheus.models import ExportModelOperationsMixin
 # from accounts.forms import LoginForm, SignupForm
 
 
@@ -41,7 +41,7 @@ def default_id():
     }
 
 
-class CustomUser(AbstractUser):
+class CustomUser(ExportModelOperationsMixin('customuser'), AbstractUser):
     username = None
     first_name = models.CharField(max_length=20)
     email = models.EmailField(db_index=True, unique=True, validators=[validate_email])

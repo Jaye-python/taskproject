@@ -10,9 +10,6 @@ from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from .forms import CustomUserChangeForm
 
-def home(request):
-    scores = CustomUser.objects.all()
-    return render(request, 'accounts/home.html', {'scores':scores})
 
 def user_signup(request):
     if request.method == 'POST':
