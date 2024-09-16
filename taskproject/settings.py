@@ -18,7 +18,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 env = os.environ
 
-SECRET_KEY = env.get('SECRET_KEY')
+# SECRET_KEY = env.get('SECRET_KEY')
+
+#compose
+SECRET_KEY = 'django-insecure-785yh)y_f11k_5_j=u55+)@godmh$&sm=!=2yit&rz%t&kd)t2'
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -158,17 +162,17 @@ DATABASES = {
 # }
 
 #FOR KUBERNETES
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         # 'ENGINE': 'django_prometheus.db.backends.postgresql', # PROMETHEUS
-#         'NAME': 'taskprojectdb',
-#         'USER': 'postgres',
-#         'PASSWORD': 'ola',
-#         'HOST': 'postgres-service',
-#         'PORT': 5432,
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        # 'ENGINE': 'django_prometheus.db.backends.postgresql', # PROMETHEUS
+        'NAME': 'taskprojectdb',
+        'USER': 'postgres',
+        'PASSWORD': 'ola',
+        'HOST': 'postgres-service',
+        'PORT': 5432,
+    }
+}
 
 
 # Password validation
