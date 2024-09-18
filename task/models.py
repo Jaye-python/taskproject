@@ -2,6 +2,7 @@ from django.db import models
 from django.conf import settings
 from django.urls import reverse
 from django_prometheus.models import ExportModelOperationsMixin
+from django.utils import timezone
 
 class Task(ExportModelOperationsMixin('task'), models.Model):
     STATUS_CHOICES = [
@@ -28,7 +29,7 @@ class Task(ExportModelOperationsMixin('task'), models.Model):
         choices=PRIORITY_CHOICES,
         default='Low',
     )
-    due_date = models.DateTimeField()
+    due_date = models.DateTimeField(default=timezone.now)
     category = models.CharField(max_length=100)
     assigned_to = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     

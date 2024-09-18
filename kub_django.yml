@@ -14,25 +14,16 @@ spec:
     spec:
       containers:
       - name: django-app
-        image: taskprojectkub:latest  # Replace with your actual image
+        image: tp
         imagePullPolicy: Never
         command: ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+        envFrom:
+          - secretRef:
+              name: kub-secrets
+          - configMapRef:
+              name: kub-config
         ports:
         - containerPort: 8000
-        env:
-        - name: POSTGRES_NAME
-          value: postgres
-        - name: POSTGRES_USER
-          value: postgres
-        - name: POSTGRES_PASSWORD
-          value: ola
-        - name: POSTGRES_HOST
-          value: postgres-service
-        - name: POSTGRES_PORT
-          value: "5432"
-        # volumeMounts:
-        # - name: app-code
-        #   mountPath: /app
         resources:
           requests:
             cpu: 100m
@@ -41,11 +32,6 @@ spec:
             cpu: 500m
             memory: 512Mi
 
-      # volumes:
-      # - name: app-code
-      #   hostPath:
-      #     path: .:/app
-        #   type: Directory
       
 ---
 apiVersion: v1
