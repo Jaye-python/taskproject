@@ -4,6 +4,18 @@ Tailwind CSS was added using CDN for faster development.
 
 Commands below use `Linux OS`.
 
+### REQUIRED ENVIRONMENT VARIABLES THAT SHOULD BE IN YOUR `.env` FILE
+DEBUG=True
+SECRET_KEY='django-insecure-785yh)y_f11k_5_j=u55+)@godmh$&sm=!=2yit&rz%t&kd)t2'
+DATABASE_NAME=<>
+DATABASE_USER=<>
+DATABASE_PASS=<>
+DATABASE_HOST=<>
+DATABASE_PORT=<>
+
+### INCLUDED IN THE REPO
+1. ANSIBLE FILE TO INSTALL APPS ON AWS EC2: [a relative link](playbook.yml)
+
 ### Implementations:
 
 1. Tasks can be Created, Updated or deleted 
