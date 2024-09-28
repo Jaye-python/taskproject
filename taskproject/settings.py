@@ -42,34 +42,30 @@ INTERNAL_IPS = [
 
 
 # ANCHOR Logging
-import logging.config
-# Clear prev config
-LOGGING_CONFIG = None
-
-# Get loglevel from env
-LOGLEVEL = os.getenv('DJANGO_LOGLEVEL', 'info').upper()
-
-logging.config.dictConfig({
-    'version': 1,
-    'disable_existing_loggers': False,
-    'formatters': {
-        'console': {
-            'format': '%(asctime)s %(levelname)s [%(name)s:%(lineno)s] %(module)s %(process)d %(thread)d %(message)s',
-        },
-    },
-    'handlers': {
-        'console': {
-            'class': 'logging.StreamHandler',
-            'formatter': 'console',
-        },
-    },
-    'loggers': {
-        '': {
-            'level': LOGLEVEL,
-            'handlers': ['console',],
-        },
-    },
-})
+# import logging.config
+# LOGGING_CONFIG = None
+# LOGLEVEL = os.getenv('DJANGO_LOGLEVEL', 'info').upper()
+# logging.config.dictConfig({
+#     'version': 1,
+#     'disable_existing_loggers': False,
+#     'formatters': {
+#         'console': {
+#             'format': '%(asctime)s %(levelname)s [%(name)s:%(lineno)s] %(module)s %(process)d %(thread)d %(message)s',
+#         },
+#     },
+#     'handlers': {
+#         'console': {
+#             'class': 'logging.StreamHandler',
+#             'formatter': 'console',
+#         },
+#     },
+#     'loggers': {
+#         '': {
+#             'level': LOGLEVEL,
+#             'handlers': ['console',],
+#         },
+#     },
+# })
 
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
@@ -167,7 +163,7 @@ WSGI_APPLICATION = 'taskproject.wsgi.application'
 #     }
 # }
 
-# ANCHOR DATABASE
+# ANCHOR DATABASE kubernetes
 DATABASES = {
     'default': {
         # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -175,7 +171,7 @@ DATABASES = {
         'NAME': os.getenv('DATABASE_NAME'),
         'USER': os.getenv('DATABASE_USER'),
         'PASSWORD': os.getenv('DATABASE_PASS'),
-        'HOST': os.getenv('DATABASE_HOST', 'localhost'),
+        'HOST': "host.docker.internal",
         'PORT': os.getenv('DATABASE_PORT'),
     }
 } 
@@ -185,27 +181,13 @@ DATABASES = {
 #     'default': {
 #         # 'ENGINE': 'django.db.backends.postgresql_psycopg2',
 #         'ENGINE': 'django_prometheus.db.backends.postgresql', # PROMETHEUS
-#         'NAME': 'taskprojectdb',
+#         'NAME': os.getenv('DATABASE_NAME'),
 #         'USER': 'postgres',
 #         'PASSWORD': 'ola',
 #         'HOST': 'taskprojectdb',
 #         'PORT': 5432,
 #     }
 # }
-
-#FOR KUBERNETES
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         # 'ENGINE': 'django_prometheus.db.backends.postgresql', # PROMETHEUS
-#         'NAME': 'taskprojectdb',
-#         'USER': 'postgres',
-#         'PASSWORD': 'ola',
-#         'HOST': 'postgres-service',
-#         'PORT': 5432,
-#     }
-# }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators

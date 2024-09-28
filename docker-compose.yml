@@ -10,11 +10,13 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - POSTGRES_NAME=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_HOST=taskprojectdb
-      - POSTGRES_PORT=5433  # Add this to specify the port
+      - SECRET_KEY=${SECRET_KEY}
+      - DEBUG=${DEBUG}
+      - POSTGRES_NAME=${DATABASE_USER}
+      - POSTGRES_USER=${DATABASE_USER}
+      - POSTGRES_PASSWORD=${DATABASE_PASS}
+      - POSTGRES_HOST=${DATABASE_NAME}
+      - POSTGRES_PORT=${DATABASE_PORT}
     depends_on:
       - taskprojectdb
 
@@ -22,11 +24,11 @@ services:
     image: postgres:13
     container_name: postgres_db
     ports:
-      - "5433:5432"  # Map port 5433 on the host to port 5432 in the container
+      - "5433:5432"
     environment:
-      POSTGRES_DB: taskprojectdb
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: ola #compose
+      POSTGRES_DB: ${DATABASE_NAME}
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASS}
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
@@ -34,14 +36,14 @@ services:
     image: dpage/pgadmin4
     container_name: pgadmin
     environment:
-      PGADMIN_DEFAULT_EMAIL: admin@example.com  # Set your pgAdmin login email
-      PGADMIN_DEFAULT_PASSWORD: admin  # Set your pgAdmin password
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
     ports:
-      - "5050:80"  # Expose pgAdmin on port 5050
+      - "5050:80"
     depends_on:
-      - taskprojectdb  # Ensure the PostgreSQL database is running
+      - taskprojectdb
     networks:
-      - monitoring  # Use the same network as PostgreSQL
+      - monitoring
 
   prometheus:
     image: prom/prometheus
@@ -51,12 +53,12 @@ services:
     networks:
       - monitoring
     depends_on:
-      - node_exporter  # Ensure Node Exporter is running
+      - node_exporter
     # command:
     #   - "--config.file=/etc/prometheus/prometheus.yml"
     # volumes:
     #   - prometheus_data:/prometheus  # Persist Prometheus data
-    #   - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml  # Correctly mount Prometheus config file
+    #   - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
 
   grafana:
     image: grafana/grafana
@@ -73,7 +75,7 @@ services:
     image: prom/node-exporter
     container_name: node_exporter
     ports:
-      - "9100:9100"  # Expose Node Exporter on port 9100
+      - "9100:9100"
     networks:
       - monitoring
 

@@ -6,5 +6,5 @@ data:
   DEBUG: "True"
   SECRET_KEY: "django-insecure-785yh)y_f11k_5_j=u55+)@godmh$&sm=!=2yit&rz%t&kd)t2"
   DATABASE_NAME: "taskprojectdb"
-  DATABASE_HOST: "host.docker.internal"
-  DATABASE_PORT: "5432"
+  DATABASE_HOST: "localhost"
+  DATABASE_PORT: "5433"

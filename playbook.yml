@@ -1,0 +1,65 @@
+---
+- name: Setup environment on EC2 instance
+  hosts: all
+  become: yes
+  tasks:
+    - name: Update APT package index
+      apt:
+        update_cache: yes
+
+    - name: Install required packages
+      apt:
+        name:
+          - python3-venv
+          - postgresql
+          - postgresql-contrib
+          - nginx
+          - curl
+          - python3-dev
+          - libpq-dev
+        state: present
+
+    - name: Create directory for project
+      file:
+        path: /home/ubuntu/selg
+        state: directory
+        mode: '0755'
+        owner: root
+        group: root
+
+    - name: Set up Python virtual environment
+      command:
+        cmd: python3 -m venv /home/ubuntu/selg/awsvenv
+        creates: /home/ubuntu/selg/awsvenv
+      become: yes
+      become_user: root
+
+    - name: Ensure virtual environment is owned by root
+      file:
+        path: /home/ubuntu/selg/awsvenv
+        state: directory
+        mode: '0755'
+        owner: root
+        group: root
+
+    - name: Upgrade pip in virtual environment
+      pip:
+        name: pip
+        virtualenv: /home/ubuntu/selg/awsvenv
+        virtualenv_command: /usr/bin/python3 -m venv
+
+    - name: Install Django, Gunicorn, and psycopg2-binary
+      pip:
+        name:
+          - django
+          - gunicorn
+          - psycopg2-binary
+        virtualenv: /home/ubuntu/selg/awsvenv
+        virtualenv_command: /usr/bin/python3 -m venv
+      vars:
+        ansible_python_interpreter: /usr/bin/python3
+
+    - name: Ensure all files in the virtual environment are owned by root
+      command: chown -R root:root /home/ubuntu/selg/awsvenv
+      become: yes
+
