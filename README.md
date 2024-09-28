@@ -14,7 +14,10 @@ DATABASE_HOST=<>
 DATABASE_PORT=<>
 
 ### INCLUDED IN THE REPO
-1. ANSIBLE FILE TO INSTALL APPS ON AWS EC2: [a relative link](playbook.yml)
+1. Ansible playbook to install django on AWS EC2: [Ansible file](playbook.yml)
+2. Docker compose file: [Docker Compose file](docker-compose.yml)
+3. Kubernetes files start with `kub`. Here is the K8 deployment for Django: [Django K8](kub_django.yml)
+4. 
 
 ### Implementations:
 
