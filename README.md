@@ -5,13 +5,13 @@ Tailwind CSS was added using CDN for faster development.
 Commands below use `Linux OS`.
 
 ### REQUIRED ENVIRONMENT VARIABLES THAT SHOULD BE IN YOUR `.env` FILE
-DEBUG=True
-SECRET_KEY='django-insecure-785yh)y_f11k_5_j=u55+)@godmh$&sm=!=2yit&rz%t&kd)t2'
-DATABASE_NAME=<>
-DATABASE_USER=<>
-DATABASE_PASS=<>
-DATABASE_HOST=<>
-DATABASE_PORT=<>
+1. DEBUG=True
+2. SECRET_KEY='django-insecure-785yh)y_f11k_5_j=u55+)@godmh$&sm=!=2yit&rz%t&kd)t2'
+3. DATABASE_NAME=<>
+4. DATABASE_USER=<>
+5. DATABASE_PASS=<>
+6. DATABASE_HOST=<>
+7. DATABASE_PORT=<>
 
 ### INCLUDED IN THE REPO
 1. Ansible playbook to install django on AWS EC2: [Ansible file](playbook.yml)
