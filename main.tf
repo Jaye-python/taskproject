@@ -214,3 +214,4 @@ resource "aws_ssm_parameter" "allowed_hosts" {
   value     = aws_instance.app_server.public_ip
   # overwrite = true
 }
+
