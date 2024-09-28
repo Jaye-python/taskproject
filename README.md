@@ -16,7 +16,7 @@ DATABASE_PORT=<>
 ### INCLUDED IN THE REPO
 1. Ansible playbook to install django on AWS EC2: [Ansible file](playbook.yml)
 2. Docker compose file that will run Prometheus, Grafana, PgAdmin and the Django app: [Docker Compose file](docker-compose.yml)
-3. Kubernetes files start with `kub`. Here is the K8 deployment for Django: [Django K8](kub_django.yml). There are K8 deployments for [Prometheus](kub_prom.yml) , [Grafana](kub_grafana.yml), [PgAdmin](kub_pgadmin.yml) and [PromConfig](kub_prom_config.yml) 
+3. Kubernetes files start with `kub`. Here is the K8 deployment for Django: [Django K8](kub_django.yml). There are K8 deployments for [Prometheus](kub_prom.yml) , [Grafana](kub_grafana.yml), [PgAdmin](kub_pgadmin.yml) and [PrometheusConfig](kub_prom_config.yml) 
 4. Terraform IAC script to create an EC2, VPC and RDS instance: [Terraform Main script](main.tf); `variables.tf` not included
 
 ### Implementations:
