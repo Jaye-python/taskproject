@@ -1,5 +1,5 @@
 # tailwind_watcher.py
-import subprocess
+# import subprocess
 
 # def run_tailwind_watch():
 #     """
@@ -8,7 +8,7 @@ import subprocess
 #     command = [
 #         './node_modules/tailwindcss',
 #         # './tailwindcss',  # Make sure that this points to your tailwindcss file in your project.
-#         '-i', 'taskproject/static/taskproject/css/styles.css', 
+#         '-i', 'taskproject/static/taskproject/css/styles.css',
 #         '-o', 'taskproject/static/taskproject/css/output.css',
 #         '--watch'
 #     ]

@@ -62,4 +62,3 @@
     - name: Ensure all files in the virtual environment are owned by root
       command: chown -R root:root /home/ubuntu/selg/awsvenv
       become: yes
-

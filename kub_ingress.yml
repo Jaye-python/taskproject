@@ -15,5 +15,5 @@ spec:
         backend:
           service:
             name: kubernetes-dashboard
-            port: 
+            port:
               number: 80

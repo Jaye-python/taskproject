@@ -47,7 +47,7 @@
             </svg>
             Ajax Tasks
         </a>
-        
+
         {% if user.is_authenticated %}
         <a href="{% url 'create-task' %}" class="nav-link flex items-center px-4 py-2 text-gray-600 hover:bg-gray-700 hover:text-white">
             <svg class="w-6 h-6 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -58,7 +58,7 @@
 
         <a href="{% url 'profile-update' %}" class="nav-link flex items-center px-4 py-2 text-gray-600 hover:bg-gray-700 hover:text-white">
             <i class="bi bi-person-badge"> </i> &nbsp;
-            <span class="font-bold text-blue-700">{{ user.first_name|upper }}</span> &nbsp; Profile Update 
+            <span class="font-bold text-blue-700">{{ user.first_name|upper }}</span> &nbsp; Profile Update
         </a>
 
 

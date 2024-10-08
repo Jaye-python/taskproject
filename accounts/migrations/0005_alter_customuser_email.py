@@ -7,13 +7,18 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('accounts', '0004_alter_customuser_profile_pix'),
+        ("accounts", "0004_alter_customuser_profile_pix"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='customuser',
-            name='email',
-            field=models.EmailField(db_index=True, max_length=254, unique=True, validators=[django.core.validators.EmailValidator()]),
+            model_name="customuser",
+            name="email",
+            field=models.EmailField(
+                db_index=True,
+                max_length=254,
+                unique=True,
+                validators=[django.core.validators.EmailValidator()],
+            ),
         ),
     ]

@@ -7,13 +7,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('task', '0002_alter_task_options'),
+        ("task", "0002_alter_task_options"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='task',
-            name='due_date',
+            model_name="task",
+            name="due_date",
             field=models.DateTimeField(default=django.utils.timezone.now),
         ),
     ]

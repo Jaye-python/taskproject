@@ -15,16 +15,52 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='Task',
+            name="Task",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=200)),
-                ('description', models.TextField()),
-                ('status', models.CharField(choices=[('In_Progress', 'In_Progress'), ('Completed', 'Completed'), ('Overdue', 'Overdue')], default='In_Progress', max_length=20)),
-                ('priority', models.CharField(choices=[('Low', 'Low'), ('Medium', 'Medium'), ('High', 'High')], default='Low', max_length=20)),
-                ('due_date', models.DateTimeField()),
-                ('category', models.CharField(max_length=100)),
-                ('assigned_to', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=200)),
+                ("description", models.TextField()),
+                (
+                    "status",
+                    models.CharField(
+                        choices=[
+                            ("In_Progress", "In_Progress"),
+                            ("Completed", "Completed"),
+                            ("Overdue", "Overdue"),
+                        ],
+                        default="In_Progress",
+                        max_length=20,
+                    ),
+                ),
+                (
+                    "priority",
+                    models.CharField(
+                        choices=[
+                            ("Low", "Low"),
+                            ("Medium", "Medium"),
+                            ("High", "High"),
+                        ],
+                        default="Low",
+                        max_length=20,
+                    ),
+                ),
+                ("due_date", models.DateTimeField()),
+                ("category", models.CharField(max_length=100)),
+                (
+                    "assigned_to",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to=settings.AUTH_USER_MODEL,
+                    ),
+                ),
             ],
         ),
     ]

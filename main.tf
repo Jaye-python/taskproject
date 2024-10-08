@@ -194,7 +194,7 @@ resource "aws_db_instance" "default" {
   backup_retention_period = 0 # default is 35 days which incurs charges
   db_subnet_group_name    = aws_db_subnet_group.main.name
   vpc_security_group_ids = [aws_security_group.rds_sg.id]
-  
+
 
 }
 
@@ -214,4 +214,3 @@ resource "aws_ssm_parameter" "allowed_hosts" {
   value     = aws_instance.app_server.public_ip
   # overwrite = true
 }
-

@@ -4,9 +4,9 @@ function showPasswordLogin() {
       var passwordField = $('#id_password');
       var type = passwordField.attr('type') === 'password' ? 'text' : 'password';
       passwordField.attr('type', type);
-  
-      $(this).toggleClass('bi bi-eye-slash-fill'); 
-      $(this).toggleClass('bi bi-eye-fill'); 
+
+      $(this).toggleClass('bi bi-eye-slash-fill');
+      $(this).toggleClass('bi bi-eye-fill');
     });
   };
 
@@ -15,21 +15,21 @@ function showPasswordLogin() {
       var passwordField = $('#id_password1');
       var type = passwordField.attr('type') === 'password' ? 'text' : 'password';
       passwordField.attr('type', type);
-  
+
       $(this).toggleClass('bi bi-eye-slash-fill');
-      $(this).toggleClass('bi bi-eye-fill'); 
+      $(this).toggleClass('bi bi-eye-fill');
     });
   };
-  
+
   function showPassword2() {
     $('#togglePassword2').on('click', function() {
       var passwordField = $('#id_password2');
       var type = passwordField.attr('type') === 'password' ? 'text' : 'password';
       passwordField.attr('type', type);
-  
-      $(this).toggleClass('bi bi-eye-slash-fill'); 
-      $(this).toggleClass('bi bi-eye-fill'); 
-      
+
+      $(this).toggleClass('bi bi-eye-slash-fill');
+      $(this).toggleClass('bi bi-eye-fill');
+
     });
   };
 
@@ -56,7 +56,7 @@ function AjaxTaskLoading() {
                 $('.task-container').empty();
                 if (Array.isArray(data) && data.length > 0) {
                     data.forEach(function(task) {
-                        
+
                         let taskHtml = `
                         <div class="p-4 bg-white rounded-md rounded-md border border-blue-600 shadow-sm mb-4">
                         <h2 class="font-bold">${task.status} <span class="text-gray-500">(${ dataCount})</span></h2>
@@ -83,7 +83,7 @@ function AjaxTaskLoading() {
                                     <h2 class="font-bold">User Flow</h2>
                                     <p class="text-gray-500">${task.description}</p>
                                     <div class="flex items-center justify-between mt-4">
-                                       
+
                                         <div class="flex items-center space-x-2">
                                             <a href="/task-detail/${task.id}/">
                                                 <button class="text-blue-500"><i class="bi bi-eye"></i></button>
@@ -153,7 +153,7 @@ function SearchTasks(searchQuery) {
                                     <h2 class="font-bold">User Flow</h2>
                                     <p class="text-gray-500">${task.description}</p>
                                     <div class="flex items-center justify-between mt-4">
-                                       
+
                                         <div class="flex items-center space-x-2">
                                             <a href="/task-detail/${task.id}/">
                                                 <button class="text-blue-500"><i class="bi bi-eye"></i></button>
@@ -169,7 +169,7 @@ function SearchTasks(searchQuery) {
                                 </div>
                             </div>
                         `;
-                        $('.task-container').append(taskHtml);                    
+                        $('.task-container').append(taskHtml);
 
                   });
               } else {
@@ -185,7 +185,7 @@ function SearchTasks(searchQuery) {
 
 function SearchTrigger() {
   $('#search-input').keyup(function() {
-      var searchQuery = $(this).val().trim(); 
+      var searchQuery = $(this).val().trim();
       if (searchQuery.length > 0) {
         SearchTasks(searchQuery);
       } else {

@@ -9,7 +9,7 @@
       <div class="messages">
           {% for message in messages %}
               <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
-                <h5 class="text-2xl font-bold text-center text-blue-600 mb-4">{{ message }}</h5>    
+                <h5 class="text-2xl font-bold text-center text-blue-600 mb-4">{{ message }}</h5>
               </div>
           {% endfor %}
       </div>
@@ -36,7 +36,7 @@
         <div class="flex space-x-2 justify-between">
             <div class="w-2/3 flex space-x-4">
                 <button id="load-in-progress" class="p-2 rounded-md border bg-blue-600 text-white border-blue-600 flex items-center justify-center">
-                Load In Progress Tasks                    
+                Load In Progress Tasks
                 </button>
                 <button id="load-completed" class="p-2 rounded-md border bg-blue-600 text-white border-blue-600 flex items-center justify-center">
                 Load Completed Tasks</button>
@@ -57,41 +57,41 @@
 
             {% if user.is_authenticated and user.profile_pix %}
             <div>
-            <img src="{{ user.profile_pix.url }}" title="{{ user.first_name }}" class="w-8 h-8 rounded-full object-cover" alt="{{ user.first_name }}" />                             
+            <img src="{{ user.profile_pix.url }}" title="{{ user.first_name }}" class="w-8 h-8 rounded-full object-cover" alt="{{ user.first_name }}" />
 
             </div>
             {% endif %}
-            
 
 
-            <div class="flex ml-auto">                
+
+            <div class="flex ml-auto">
                 <a href="{% url 'create-task' %}" class="p-2 rounded-md border bg-blue-600 text-white border-blue-600 flex items-center justify-center">
                     <i class="bi bi-plus mr-2"></i> Add Task
                 </a>
-                
+
   </div>
-        </div>    
+        </div>
 
     <div class="flex space-x-6">
 
-            <div class="w-1/3 mt-6 task-container"> 
-                  
+            <div class="w-1/3 mt-6 task-container">
+
                 <div class="p-4 bg-white rounded-md rounded-md border border-blue-600 shadow-sm mb-4">
                     <h2 class="font-bold">Click on Task Status button above<span class="text-gray-500"></span></h2>
                 </div>
             </div>
 
-    </div> <!-- flex -->            
+    </div> <!-- flex -->
 </div> <!-- container -->
-      
+
 <script>
     $(document).ready(function() {
         AjaxTaskLoading();
         SearchTrigger();
-    
-    
+
+
     });
-          
+
 </script>
 
 {% endblock %}
